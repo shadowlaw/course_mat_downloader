@@ -46,7 +46,7 @@ def file_list(foldername):
         files = os.listdir(foldername)
         results = []
         for item in files:
-            if os.path.isfile(foldername+'/'+item):
+            if os.path.isfile(os.path.join(foldername, item)):
                 if '.'+str(item).split('.')[-1] in FILE_LIST:
                     results.append(item)
 
@@ -66,7 +66,7 @@ def downloading_file_check(folder_name):
     try:
         files = os.listdir(folder_name)
         for item in files:
-            if os.path.isfile(folder_name+'/'+item):
+            if os.path.isfile(os.path.join(folder_name, item)):
                 if 'download' in '.'+str(item).split('.')[-1]:
                     return True
 
@@ -88,8 +88,8 @@ def move_all_files_to(src, dest):
     files = file_list(src)
 
     for item in files:
-        current_location = src+'/'+item
-        destination_location = dest+'/'+item
+        current_location = os.path.join(src, item)
+        destination_location = os.path.join(dest, item)
         try:
             os.rename(current_location, destination_location)
         except Exception as e:
