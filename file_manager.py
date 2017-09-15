@@ -67,7 +67,8 @@ def downloading_file_check(folder_name):
         files = os.listdir(folder_name)
         for item in files:
             if os.path.isfile(os.path.join(folder_name, item)):
-                if 'download' in '.'+str(item).split('.')[-1]:
+                ext = '.'+str(item).split('.')[-1]
+                if 'download' in ext or 'part' in ext:
                     return True
 
         return False
@@ -91,6 +92,7 @@ def move_all_files_to(src, dest):
         current_location = os.path.join(src, item)
         destination_location = os.path.join(dest, item)
         try:
+            print('Moving {}'.format(item))
             os.rename(current_location, destination_location)
         except Exception as e:
             print(e)
