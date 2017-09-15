@@ -34,7 +34,11 @@ def init(download_area):
         sys.exit()
 
     try:
-        browser = webdriver.Chrome(executable_path= os.path.join(os.getcwd(), 'chromedriver'), chrome_options = options)
+        if os.name == 'nt':
+            browser = webdriver.Chrome(executable_path= os.path.join(os.getcwd(), 'chromedriver_win'), chrome_options = options)
+        else:
+            browser = webdriver.Chrome(executable_path= os.path.join(os.getcwd(), 'chromedriver'), chrome_options = options)
+            
         browser.get(base_url)
         browser.maximize_window()
 
@@ -143,7 +147,10 @@ def login_info():
     '''Requests user login and course input. Returns a list of the input'''
 
     user = str(raw_input('Enter ID number: '))
-    passw = getpass.unix_getpass('Enter Password(Password will not be displayed): ')
+    if os.name == 'nt':
+        passw = getpass.win_getpass('Enter Password(Password will not be displayed): ')
+    else:
+        passw = getpass.unix_getpass('Enter Password(Password will not be displayed): ')
     name = str(raw_input('Enter Profile Username: '))
 
     return [user, passw, name]
