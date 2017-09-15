@@ -48,13 +48,12 @@ def init(download_area):
         cleanup_exit(browser)
 
 
-def login(Uname, Pword, login_name):
+def login(Uname, Pword):
     ''' Attempts login using provided credentials. Returns True ons successful login, False otherwise.
 
     Argument list:
     Uname: ID number.
     Pword: Password.
-    login_name: First name of your profile.
     '''
 
     global chrome
@@ -72,7 +71,7 @@ def login(Uname, Pword, login_name):
         login_butn.click()
         chrome.get(base_url)
 
-        if login_name not in chrome.page_source or 'Log in' in chrome.page_source:
+        if 'Log in' in chrome.page_source:
             return False
 
         return True
@@ -151,9 +150,8 @@ def login_info():
         passw = getpass.win_getpass('Enter Password(Password will not be displayed): ')
     else:
         passw = getpass.unix_getpass('Enter Password(Password will not be displayed): ')
-    name = str(raw_input('Enter Profile Username: '))
 
-    return [user, passw, name]
+    return [user, passw]
 
 if __name__ == '__main__':
     base_url = 'http://ourvle.mona.uwi.edu'
@@ -168,7 +166,7 @@ if __name__ == '__main__':
 
     while control_flag:
 
-        if login(login_arr[0], login_arr[1], login_arr[2]):
+        if login(login_arr[0], login_arr[1]):
             print('Login Successful')
             control_flag = False
         else:
