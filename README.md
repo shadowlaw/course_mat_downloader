@@ -9,7 +9,8 @@ Automatically downloads all materials from requested courses registered for by t
 
 ## Instructions
 ##### Usage:
-                main.py
+                python2 main.py
+                python.exe main.py
 
 ## External dependencies
 
@@ -17,7 +18,7 @@ Automatically downloads all materials from requested courses registered for by t
   - installation using pip: pip install selenium
 
 ## compatibility
-.py files compatible with python 2.x
+.py files compatible with python 2.x.
 Chrome web drivers compatible with python, python2 and python3
 
 Tested on unix and windows 8.1
