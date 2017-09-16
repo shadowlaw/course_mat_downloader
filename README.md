@@ -18,6 +18,6 @@ Automatically downloads all materials from requested courses registered for by t
 
 ## compatibility
 .py files compatible with python 2.x
-chrome web drivers compatible with python, python2 and python3
+Chrome web drivers compatible with python, python2 and python3
 
 Tested on unix and windows 8.1
